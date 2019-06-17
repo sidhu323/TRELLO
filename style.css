@@ -1,0 +1,29 @@
+body {
+    background: url("/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg") no-repeat;
+    background-size: cover;
+    height: 54em;
+}
+
+.container{
+    text-align: center;
+    display: block;
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    margin: 5em 10em 0 10em;
+    background: rgba(43, 49, 51, 0.911);
+}
+.card{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.lists{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+section{
+    background:rgba(238, 240, 241, 0.87);
+    height: 500px;
+    width: 500px;
+    color: white;
+}
