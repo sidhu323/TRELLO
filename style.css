@@ -24,6 +24,6 @@ body {
 section{
     background:rgba(238, 240, 241, 0.87);
     height: 500px;
-    width: 500px;
+    /* width: 500px; */
     color: white;
 }
