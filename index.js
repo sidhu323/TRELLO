@@ -13,4 +13,3 @@ const paricularList='5ce55069bffb786eee14d8f5'
 var result = Data();
 var dataofCardId=result.then(value =>console.log(value));
 
-
