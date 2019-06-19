@@ -33,7 +33,7 @@ const getCheckListItem = (items) => {
  return Promise.all(items.map(current => {
    return fetch(`https://api.trello.com/1/checklists/${current}/checkItems?key=${API_KEY}&token=${TOKEN}`)
    .then(resp => resp.json())
-   .then(data =>  data.map(items => items["name"]));
+   .then(data =>  data);
  }))
 }
 
@@ -41,14 +41,29 @@ var checkListItemId = checkListId.then(items => {
  return getCheckListItem(items.flat())
 });
 
+//FOR Appending the Checklists Items in HTML
 checkListItemId.then(current=>appendingList(current));
 
 function appendingList(item){
 
      item.flat().map(i=>{
-        var node=document.createElement('li');
-        var textnode=document.createTextNode(i);
-        node.append(textnode);
-        document.getElementById("node-list").append(node);
-    })
+        var ul = document.getElementById('checklists-items'); //ul
+        var li = document.createElement('li');//li
+        var checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.value = 1;
+            checkbox.class=  'box';
+            checkbox.name = "todo[]";
+            li.appendChild(checkbox);
+             var text = document.getElementById('checklists-items');
+            li.appendChild(document.createTextNode(i.name));
+            ul.appendChild(li); 
+        var dBtn = document.createElement("button");
+            dBtn.appendChild(document.createTextNode("X"));
+            li.appendChild(dBtn);
+         
+          })
+            
 }
+
+
