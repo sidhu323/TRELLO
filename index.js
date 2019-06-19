@@ -41,29 +41,35 @@ var checkListItemId = checkListId.then(items => {
  return getCheckListItem(items.flat())
 });
 
+
+
 //FOR Appending the Checklists Items in HTML
-checkListItemId.then(current=>appendingList(current));
+checkListItemId.then(current=>appendingList(current.flat()));
 
-function appendingList(item){
 
-     item.flat().map(i=>{
-        var ul = document.getElementById('checklists-items'); //ul
-        var li = document.createElement('li');//li
-        var checkbox = document.createElement('input');
-            checkbox.type = "checkbox";
-            checkbox.value = 1;
-            checkbox.class=  'box';
-            checkbox.name = "todo[]";
-            li.appendChild(checkbox);
-             var text = document.getElementById('checklists-items');
-            li.appendChild(document.createTextNode(i.name));
-            ul.appendChild(li); 
-        var dBtn = document.createElement("button");
-            dBtn.appendChild(document.createTextNode("X"));
-            li.appendChild(dBtn);
-         
-          })
-            
+ const appendingList=(current)=>{
+
+   var checkdos=document.getElementById("checklists");
+   current.map(items=>{ 
+         let newItems= newCollection(items);
+         checkdos.appendChild(newItems);
+       })
 }
+
+function newCollection(items){
+   let division=document.createElement('div');
+   division.id='trellolist';
+      let div2=`<input type="checkbox" class="check">
+               <p class="lists">${items.name}</p>
+               <i class="far fa-window-close" data-itemId=${items.id} data-checkListid= ${items.idcheckList} data-status=${items.status}></i>`
+              
+      division.innerHTML=div2;
+      return division;
+
+}
+
+
+
+
 
 

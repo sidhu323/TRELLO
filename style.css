@@ -9,11 +9,33 @@ h1{
     color: white;
     
 }
-ul{
-    line-height: 1.7em;
-    text-align: left;
+
+
+
+#trellolist:hover {
+	background: rgba(148, 156, 34, 0.472);
 }
-li{
+
+
+.card{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.lists{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+section{
+    color: white;
+
+}
+button{
+      float: right;
+  }
+ #trellolist{
+
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
     list-style: none;
 	padding: 10px 20px;
 	color: #ffffff;
@@ -31,35 +53,20 @@ li{
     font-style: sans-serif;
     font-size: 1.2em;
    
-
-}
-
-li:hover {
-	background: rgba(18, 223, 52, 0.472);
-}
-.container{
-    text-align: center;
-    display: block;
-    border: 5px solid rgb(8, 8, 8);
-    margin: 5em 10em 0 10em;
-
-}
-
-.card{
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-.lists{
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-section{
-    color: white;
-
-   
-}
-li.checked{
-    text-decoration: line-through;
-    background-color:#91D1FF;
   }
+
+  .check{
+      /* justify-content: center; */
+      align-self: center;
+      }
+
+      input.check { 
+        width: 40px; 
+        height: 40px; 
+    }  
   
+  .fa-window-close{
+      justify-content: center;
+      align-self: center;
+
+  }
