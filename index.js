@@ -1,6 +1,6 @@
 const API_KEY = '6f03dc7bbfc8691e6052dd28b71260ad';
 const TOKEN = '558d2ff642d811695cc3aae89e347a88069ec4c306e29bb27f4e63a4bf72213c';
-const LIST_ID = '5ce55069bffb786eee14d8f5';
+const LIST_ID = '5ce905dacd7d8022cf6b0886';
 // const fetch=require('node-fetch')
 /*------------------------for all cards of lists---------------------*/
 const getCardId = () => {
@@ -10,7 +10,6 @@ const getCardId = () => {
    .then(data => data.map(itemId => itemId["id"]));
 }
 const cardIdResult = getCardId();
-
 
 /*---------------------------- for all checklist of cards --------------*/
 const getChecklistIds = (array) => {
@@ -34,6 +33,7 @@ const getCheckListItem = (items) => {
    return fetch(`https://api.trello.com/1/checklists/${current}/checkItems?key=${API_KEY}&token=${TOKEN}`)
    .then(resp => resp.json())
    .then(data =>  data);
+
  }))
 }
 
@@ -46,28 +46,28 @@ var checkListItemId = checkListId.then(items => {
 checkListItemId.then(current=>{
    appendingList(current.flat())
    checkListDelete();
+   checkListAdd();
+   checkListCross();
 
 });
 
-
 function newCollection(items){
    // console.log(items)
-   let division=document.createElement('div');
-   division.id='trellolist';
-      let div2=`<input type="checkbox" class="check">
+   let checklistsBigDivision=document.createElement('div');
+   checklistsBigDivision.id='trellolist';
+      let checklistPArticularDivision=`<input type="checkbox" class="check"  data-itemId=${items.id} data-checkListid=${items.idChecklist} data-state=${items.state}>
                <p class="lists">${items.name}</p>
-               <i class="far fa-window-close" data-itemId=${items.id} data-checkListid= ${items.idChecklist} data-state=${items.state}></i>`
-              
-       division.innerHTML=div2;
-       return division;
+               <i class="far fa-window-close" data-itemId=${items.id} data-checkListid=${items.idChecklist} data-state=${items.state}></i>`
+              checklistsBigDivision.innerHTML=checklistPArticularDivision;
+              return checklistsBigDivision;
 }
 
 const appendingList=(current)=>{
 
-   var checkdos=document.getElementById("checklists");
+   var checkListdomains=document.getElementById("checklists");
    current.map(items=>{ 
          let newItems= newCollection(items);
-         checkdos.appendChild(newItems);
+         checkListdomains.appendChild(newItems);
        })
 }
 
@@ -81,13 +81,13 @@ const addCallBack = (events) =>{
      .then(response => response.json())
        .then(data => {
          let parent = document.getElementById('checklists')
-      let element =   createLI(data);
+         let element =  newCollection(data);
          parent.prepend(element)
   
        } );
   }
   const checkListAdd = () => {
-   var dataAdd = document.getElementById('button');
+   var dataAdd = document.getElementById('adding-button');
   
    dataAdd.addEventListener('click',addCallBack)
   }
@@ -107,12 +107,35 @@ const deleteChecklistItems =  (events) => {
      events.target.parentElement.remove();
  }
 }
-
 const checkListDelete = () => {
  var dataDelete = document.getElementById('checklists')
  dataDelete.addEventListener('click', deleteChecklistItems)
 }
 
+
+const CrossChecklistItems = (events)=>
+{
+   
+   if(events.target.className==="check"){
+   
+      let itemId = events.target.dataset.itemid;
+      let listId=events.target.dataset.checklistid;
+      let checktik=events.target.checked;
+      fetch(`https://api.trello.com/1/checklists/${listId}/cards?key=${API_KEY}&token=${TOKEN}`)   
+         .then(resp=>resp.json())
+         .then(data=>(data[0].id))
+            
+         
+      
+   // }
+
+} 
+}
+
+const checkListCross = () => {
+   var checkCross = document.getElementById('checklists')
+   checkCross.addEventListener('click', CrossChecklistItems)
+  }
 
 
 
