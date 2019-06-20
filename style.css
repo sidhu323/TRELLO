@@ -9,9 +9,6 @@ h1{
     color: white;
     
 }
-
-
-
 #trellolist:hover {
 	background: rgba(148, 156, 34, 0.472);
 }
@@ -60,9 +57,9 @@ button{
       align-self: center;
       }
 
-      input.check { 
-        width: 40px; 
-        height: 40px; 
+    input.check { 
+        width: 50px; 
+        height: 90px; 
     }  
   
   .fa-window-close{
@@ -70,3 +67,7 @@ button{
       align-self: center;
 
   }
+input[type='checkbox']{
+    width: 50px;
+    height: 50px;
+}
