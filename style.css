@@ -3,13 +3,12 @@ body {
     background-size: cover;
 
 }
-
 h1 {
     text-align: center;
     color: white;
+    font-family: Helvetica;
 
 }
-
 #trellolist:hover {
     background: rgba(148, 156, 34, 0.472);
 }
@@ -35,7 +34,7 @@ button {
 #trellolist {
 
     display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-columns: 0.5fr 4fr 1fr;
     list-style: none;
     padding: 10px 20px;
     color: #ffffff;
@@ -43,7 +42,7 @@ button {
     font-weight: 700;
     border: 2px solid #025f70;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background: rgba(15, 15, 15, 0.623);
     transition: all 0.75s ease;
     -webkit-transition: all 0.5s ease;
@@ -52,16 +51,12 @@ button {
     -o-transition: all 0.5 ease;
     font-style: sans-serif;
     font-size: 1.2em;
-
 }
 
 .check {
     /* justify-content: center; */
     align-self: center;
-
 }
-
-
 
 .fa-window-close {
     justify-content: center;
@@ -72,6 +67,7 @@ button {
 input[type='checkbox'] {
     width: 50px;
     height: 50px;
+    zoom: 63%;
 }
 
 #adding-button {
@@ -110,3 +106,8 @@ input {
     color: white;
     text-align: center;
 }
+.fa-window-close{
+    color:red;
+    cursor: pointer;
+    zoom: 200%;
+ }
