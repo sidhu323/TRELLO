@@ -20,7 +20,7 @@ const getChecklistIds = (item) => {
             let newList = list.checkItems.map(l => {
                return {
                   ...l,
-                  cardId: list.idCard
+                  cardId:list.idCard
                }
             })
             result = result.concat(newList);
